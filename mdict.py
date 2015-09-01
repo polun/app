@@ -9,7 +9,7 @@ if len(sys.argv) <= 1:
     print '请输入要查询的词,eg:mdict compact'
     os._exit(0)
 
-query = sys.argv[1]
+query = ' '.join(sys.argv[1:])
 url = 'http://apis.baidu.com/apistore/tranlateservice/dictionary?query={0}&from=en&to=zh'.format(query)
 key = 'e8601992267c65d63cf5bf37c926d3bf'
 req = urllib2.Request(url)
@@ -20,7 +20,6 @@ if content:
     content = json.loads(content)
     if content['errNum'] ==0 and len(content['retData']['dict_result']) > 0:
         res = content['retData']['dict_result']['symbols']
-        print res
         if len(res) > 0:
             for r in res:
                 print '[美]',r['ph_am']
