@@ -1,9 +1,10 @@
 {
     "name": "start-git",
     "displayName": "start-git",
-    "description": "start git bash shell on windows",
-    "version": "0.0.1",
+    "description": "start git bash on windows",
+    "version": "0.0.2",
     "publisher": "polunzh",
+    "icon": "start-git.png",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -17,14 +18,12 @@
     "contributes": {
         "commands": [{
             "command": "extension.startGit",
-            "title": "start git shell"
+            "title": "start git bash"
         }],
-        "keybindings":[
-            {
-                "command": "extension.startGit",
-                "key": "ctrl+alt+g"
-            }
-        ]
+        "keybindings": [{
+            "command": "extension.startGit",
+            "key": "ctrl+alt+g"
+        }]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",

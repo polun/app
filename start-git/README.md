@@ -1,4 +1,4 @@
-# start-git README
+# start-git
 
 A Visual Studio Code extension for opening git shell on windows.
 
