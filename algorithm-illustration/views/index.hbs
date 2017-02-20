@@ -1,0 +1,77 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<button onclick="redraw()">重绘</button> {{#extend "scripts"}}
+<script src="/javascripts/highcharts.js"></script>
+<script>
+    function bubbleSort(arr) {
+        var data = arr.slice();
+        var length = data.length;
+
+        for (var i = 0; i < length - 1; i++) {
+            for (var j = 0; j < length - i - 1; j++) {
+                if (data[j] > data[j + 1]) {
+                    let temp = data[j];
+                    data[j] = data[j + 1];
+                    data[j + 1] = temp;
+                }
+
+
+            }
+        }
+
+        return data;
+    };
+    
+    var data = [21, 1, 34, 12, 4, 2, 19, 21, 32, 10];
+    var hc = Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'alg-测试'
+        },
+        subtitle: {
+            text: '测试'
+        },
+        xAxis: {
+            categories: [21, 1, 34, 12, 4, 2, 19, 21, 32, 10],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Rainfall (mm)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '数组',
+            data: data
+        }]
+    });
+
+
+
+
+
+    var tempData = bubbleSort(data);
+    hc.xAxis[0].setCategories(tempData);
+    hc.series[0].setData(tempData, false);
+    hc.redraw();
+
+</script>
+{{/extend}}
