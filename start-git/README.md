@@ -24,6 +24,6 @@ It's the `git-bash.exe` file in `git installation directory`
 
 Default is current `vsc rootpath`
 
-## Key Binding
+## Default Key Binding
 
 `ctrl+alt+g`
