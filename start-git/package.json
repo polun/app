@@ -2,7 +2,7 @@
     "name": "start-git",
     "displayName": "start-git",
     "description": "start git bash on windows",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "polunzh",
     "icon": "start-git.png",
     "engines": {

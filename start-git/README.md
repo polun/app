@@ -27,3 +27,7 @@ Default is current `vsc rootpath`
 ## Key Binding
 
 `ctrl+alt+g`
+
+## More
+- [details doc](https://github.com/polunzh/app/blob/master/start-git/README.md)
+- [issue](https://github.com/polunzh/app/issues)
