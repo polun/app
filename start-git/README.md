@@ -16,7 +16,7 @@ A Visual Studio Code extension for opening git shell on windows.
 
 *required*
 
-It's the `git-bash.exe` file in `git installation directory`
+It's the `git-bash.exe`(not `git-cmd.exe`) file in `git installation directory`
 
 ### cwd
 
