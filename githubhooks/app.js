@@ -5,12 +5,7 @@ let simpleGit = require('simple-git');
 const path = require('path');
 const fs = require('fs-extra')
 
-const config = {
-    targetDir: '/home/polunzh/code',
-    targetName: 'polunzhtest',
-    githubRepo: 'https://www.github.com/polunzh/test',
-    githubBranch: 'master'
-};
+const config = require('./config.js');
 
 const app = express();
 const PORT = '8099';
@@ -25,7 +20,7 @@ app.all('*', (req, res, next) => {
     next();
 });
 
-app.post('/polunzh/test', (req, res, next) => {
+app.post(`/polunzh/${config.repo}`, (req, res, next) => {
     if (req.get('X-GitHub-Event') === 'push' || req.get('X-GitHub-Event') === 'commit') {
         log(`Event type: [${req.get('X-GitHub-Event')}]`);
 
@@ -47,7 +42,7 @@ app.listen(PORT, () => {
 function pullLatestRepo(callback) {
     const tempDir = 'githubhook_temp_' + config.targetName + Date.now();
     simpleGit = simpleGit(config.targetDir);
-    simpleGit.clone(config.githubRepo,
+    simpleGit.clone(config.githubRepoUrl,
         `${path.join(config.targetDir,tempDir)}`, {
             bare: true
         },
