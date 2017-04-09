@@ -41,7 +41,7 @@ app.listen(PORT, () => {
 function pullLatestRepo(callback) {
     const tempDir = 'githubhook_temp_' + config.repo + Date.now();
     simpleGit = simpleGit(config.targetDir);
-    simpleGit.clone(config.githubRepoUrl,
+    simpleGit.clone(`https://www.github.com/polunzh/${config.repo}`,
         `${path.join(config.targetDir,tempDir)}`, {
             bare: true
         },
