@@ -21,7 +21,7 @@ app.all('*', (req, res, next) => {
 });
 
 app.post(`/polunzh/${config.repo}`, (req, res, next) => {
-    if (req.get('X-GitHub-Event') === 'push' || req.get('X-GitHub-Event') === 'commit') {
+    if (req.get('X-GitHub-Event') === 'push') {
         pullLatestRepo((err, result) => {
             if (err) log(err.message);
 
