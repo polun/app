@@ -31,8 +31,11 @@ app.post('/polunzh/test', (req, res, next) => {
                         return;
                     }
 
-                    fs.move(path.join(config.targetDir, tempDir), path.join(config.targetDir, config.targetName),
- err => {
+                    fs.move(path.join(config.targetDir, tempDir),
+                        path.join(config.targetDir, config.targetName), {
+                            overwrite: true
+                        },
+                        err => {
                             if (err) return console.error(err);
 
                             console.log('success!');
