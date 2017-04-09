@@ -1,11 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const os = require('os');
-let simpleGit = require('simple-git');
+const config = require('./config.js');
 const path = require('path');
 const fs = require('fs-extra')
-
-const config = require('./config.js');
+let simpleGit = require('simple-git')(config.targetDir);
 
 const app = express();
 const PORT = '8099';
@@ -40,7 +39,6 @@ app.listen(PORT, () => {
 
 function pullLatestRepo(callback) {
     const tempDir = 'githubhook_temp_' + config.repo + Date.now();
-    simpleGit = simpleGit(config.targetDir);
     simpleGit.clone(`https://www.github.com/polunzh/${config.repo}`,
         `${path.join(config.targetDir,tempDir)}`, {
             bare: true
