@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs-extra')
 
 const config = {
-    targetDir: 'E:\\Code\\Test\\',
+    targetDir: '/home/polunzh/code',
     targetName: 'polunzhtest',
     githubRepo: 'https://www.github.com/polunzh/test',
     githubBranch: 'master'
@@ -31,16 +31,16 @@ app.post('/polunzh/test', (req, res, next) => {
                         return;
                     }
 
-                    fs.move(path.join(config.targetDir, config.targetName),
-                        path.join(config.targetDir, tempDir), err => {
+                    fs.move(path.join(config.targetDir, tempDir), path.join(config.targetDir, config.targetName),
+ err => {
                             if (err) return console.error(err);
 
                             console.log('success!');
+                            fs.removeSync(tempDir);
                         });
                 });
         } finally {
             console.log('finally')
-            fs.removeSync(tempDir);
         }
     }
 
