@@ -51,7 +51,7 @@ function pullLatestRepo(callback) {
             }
 
             fs.move(path.join(config.targetDir, tempDir),
-                path.join(config.targetDir, config.repo), {
+                path.join(config.tempDir, config.repo), {
                     overwrite: true
                 },
                 err => {
