@@ -7,7 +7,6 @@ const fs = require('fs-extra')
 let simpleGit = require('simple-git')(config.targetDir);
 
 const app = express();
-const PORT = '8099';
 
 app.use(bodyParser.json());
 
@@ -33,7 +32,7 @@ app.post(`/polunzh/${config.repo}`, (req, res, next) => {
     }
 });
 
-app.listen(PORT, () => {
+app.listen(config.port, () => {
     log(`listen on port ${PORT}`);
 });
 

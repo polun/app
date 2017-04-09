@@ -1,4 +1,5 @@
 module.exports = {
     targetDir: 'E:\\Temp',
-    repo: 'test'
+    repo: 'test',
+    port: '18085'
 };
