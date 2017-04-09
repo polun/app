@@ -22,15 +22,14 @@ app.all('*', (req, res, next) => {
 
 app.post(`/polunzh/${config.repo}`, (req, res, next) => {
     if (req.get('X-GitHub-Event') === 'push' || req.get('X-GitHub-Event') === 'commit') {
-        log(`Event type: [${req.get('X-GitHub-Event')}]`);
-
         pullLatestRepo((err, result) => {
             if (err) log(err.message);
 
+            log(`[success] Event type: ${req.get('X-GitHub-Event')}`);
             res.status(204).send();
         });
     } else {
-        log(`Invalid event type: [${req.get('X-GitHub-Event')}]`);
+        log(`Invalid event type: ${req.get('X-GitHub-Event')}`);
         res.status(400).send('Invalid event type');
     }
 });
@@ -40,7 +39,7 @@ app.listen(PORT, () => {
 });
 
 function pullLatestRepo(callback) {
-    const tempDir = 'githubhook_temp_' + config.targetName + Date.now();
+    const tempDir = 'githubhook_temp_' + config.repo + Date.now();
     simpleGit = simpleGit(config.targetDir);
     simpleGit.clone(config.githubRepoUrl,
         `${path.join(config.targetDir,tempDir)}`, {
@@ -52,7 +51,7 @@ function pullLatestRepo(callback) {
             }
 
             fs.move(path.join(config.targetDir, tempDir),
-                path.join(config.targetDir, config.targetName), {
+                path.join(config.targetDir, config.repo), {
                     overwrite: true
                 },
                 err => {
