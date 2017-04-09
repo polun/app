@@ -15,6 +15,10 @@ app.all('*', (req, res, next) => {
         return res.status(400).send('Invalid request');
     }
 
+    if (req.get('X-GitHub-Event') === 'ping') {
+        return res.status(204).send();
+    }
+
     next();
 });
 
