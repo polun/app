@@ -33,7 +33,7 @@ app.post(`/polunzh/${config.repo}`, (req, res, next) => {
 });
 
 app.listen(config.port, () => {
-    log(`listen on port ${PORT}`);
+    log(`listen on port ${config.port}`);
 });
 
 function pullLatestRepo(callback) {
