@@ -8,4 +8,11 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.post('/login', (req, res, next) => {
+  var lang = 'vi';
+  var user_en = 'user_' + lang;
+  console.log(req.body[user_en]);
+  console.log(req.body.user_en);
+});
+
 module.exports = router;

@@ -2,6 +2,14 @@
 <p>Welcome to {{title}}</p>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <button onclick="redraw()">重绘</button> {{#extend "scripts"}}
+<form method="post" action="/login">
+    <input type="text" name="user_vi" placeholder="User name vi" value="usernametest">
+    <input type="text" name="email_vi" placeholder="Email vi">
+    <br/>
+    <input type="text" name="user_en" placeholder="User name en">
+    <input type="text" name="email_en" placeholder="Email en">
+    <input type="submit" value="Submit">
+</form>
 <script src="/javascripts/highcharts.js"></script>
 <script>
     function bubbleSort(arr) {
@@ -22,7 +30,7 @@
 
         return data;
     };
-    
+
     var data = [21, 1, 34, 12, 4, 2, 19, 21, 32, 10];
     var hc = Highcharts.chart('container', {
         chart: {
