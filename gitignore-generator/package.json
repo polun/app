@@ -1,0 +1,20 @@
+{
+  "name": "gitignore-generator",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/polunzh/app.git"
+  },
+  "description": "gitignore file generator",
+  "main": "index.js",
+  "dependencies": {
+    "simple-git": "^1.70.0",
+    "yargs": "^7.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
