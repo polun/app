@@ -3,6 +3,11 @@ const fs = require('fs');
 const axios = require('axios');
 const process = require('process');
 
+const bodyParser = require('body-parser');
+
+const jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 const app = express();
 
 if (!fs.existsSync('./config.js')) {
@@ -17,17 +22,26 @@ app.get('/getcode', (req, res, next) => {
     res.redirect(`${config.url}?API_Key=${config.appKey}&redirect_uri=${config.redirectUrl}`);
 });
 
-app.get('/yineng/oatuh2/callback', (req, res, next) => {
-    let code = res.params.code;
+app.post('/oatuh2/callback', urlencodedParser, (req, res, next) => {
+    let code = req.body.code;
     console.log(`fetched code: ${code}`);
 
-    axios.post(tokenUrl, {
+    console.log(config.tokenUrl);
+
+    console.log({
+        API_Key: config.appKey,
+        Secret_Key: config.secretKey,
+        Redirect_uri: config.redirectUrl,
+        Code: code
+    });
+
+    axios.post(config.tokenUrl, {
         API_Key: config.appKey,
         Secret_Key: config.secretKey,
         Redirect_uri: config.redirectUrl,
         Code: code
     }).then((res) => {
-        console.log(res);
+        console.log(res.data);
     }).catch((err) => {
         console.log(err);
     });
