@@ -26,21 +26,11 @@ app.post('/oatuh2/callback', urlencodedParser, (req, res, next) => {
     let code = req.body.code;
     console.log(`fetched code: ${code}`);
 
-    console.log(config.tokenUrl);
-
-    console.log({
-        API_Key: config.appKey,
-        Secret_Key: config.secretKey,
-        Redirect_uri: config.redirectUrl,
-        Code: code
-    });
-
-    axios.post(config.tokenUrl, {
-        API_Key: config.appKey,
-        Secret_Key: config.secretKey,
-        Redirect_uri: config.redirectUrl,
-        Code: code
+    axios({
+        method: 'post',
+        url: `${config.tokenUrl}?API_Key=${config.appKey}&Secret_Key=${config.secretKey}&Redirect_uri=${config.redirectUrl}&Code=${code}`
     }).then((res) => {
+        console.log('-'.repeat(10));
         console.log(res.data);
     }).catch((err) => {
         console.log(err);
