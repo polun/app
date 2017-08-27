@@ -1,5 +1,5 @@
 module.exports = {
-    targetDir: 'E:\\Temp',
-    repo: 'test',
+    targetDir: '/home/polunzh/code',
+    repo: 'polunzh.github.io',
     port: '18085'
 };

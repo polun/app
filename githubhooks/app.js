@@ -9,6 +9,7 @@ let simpleGit = require('simple-git')(config.targetDir);
 const app = express();
 
 app.use(bodyParser.json());
+app.set('x-powered-by', false);
 
 app.all('*', (req, res, next) => {
     if (!req.get('X-GitHub-Event')) {
