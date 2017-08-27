@@ -36,14 +36,14 @@ app.post(`/polunzh/${config.repo}`, (req, res, next) => {
     }
 });
 
-app.listen(config.port, () => {
+app.listen(config.port, 'localhost', () => {
     log(`listen on port ${config.port}`);
 });
 
 function pullLatestRepo(callback) {
     const tempDir = 'githubhook_temp_' + config.repo + Date.now();
     simpleGit.clone(`https://www.github.com/polunzh/${config.repo}`,
-        `${path.join(config.targetDir,tempDir)}`, {
+        `${path.join(config.targetDir, tempDir)}`, {
             bare: true
         },
         (err) => {
